@@ -33,3 +33,8 @@ To use the components in your app, import them from the `ui` package.
 ```tsx
 import { Button } from "@workspace/ui/components/button"
 ```
+#### To install a dependency in a perticular app/packages
+
+```
+pnpm -F eslint-config add --save-dev @eslint/js
+```
