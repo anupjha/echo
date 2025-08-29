@@ -7,6 +7,10 @@ export const getMany = query({
     if (!identity) {
       throw new Error("Unauthorized");
     }
+    const orgId = identity.orgId as string;
+    if (!orgId) {
+      throw new Error("Missing organization.");
+    }
     const users = await ctx.db.query("users").collect();
     return users;
   },
