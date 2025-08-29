@@ -38,3 +38,19 @@ import { Button } from "@workspace/ui/components/button"
 ```
 pnpm -F eslint-config add --save-dev @eslint/js
 ```
+
+### Install all components - from apps/web
+```
+pnpm dlx shadcn@2.9.2 add --all
+
+~~~~
+
+https://docs.sentry.io/platforms/javascript/guides/nextjs/troubleshooting/#pnpm-resolving-import-in-the-middle-external-package-errors
+
+Add below lines in .npprc
+```
+public-hoist-pattern[]=*import-in-the-middle*
+public-hoist-pattern[]=*require-in-the-middle*
+
+pnpm install
+```
