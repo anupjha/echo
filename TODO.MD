@@ -1,8 +1,3 @@
-
-02:07:34 04 Organizations
-02:44:26 05 Error Tracking
-03:08:45 06 AI Voice Assistant
-03:37:48 07 Dashboard Layout
 04:12:24 08 Theme
 04:25:02 09 Widget Layout
 04:42:58 10 Widget Session
@@ -15,7 +10,6 @@
 09:11:20 17 Dashboard Inbox
 10:07:14 18 Dashboard Chat
 10:56:01 19 AI Tool Calling
-00:00 Intro & Demo
 01:52 20 Generating Embeddings
 54:10 21 Knowledge Base
 01:54:58 22 AI Search Tool
