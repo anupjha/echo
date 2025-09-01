@@ -8,14 +8,20 @@ import { Input } from "@workspace/ui/components/input";
 import { useMutation } from "convex/react";
 import { api } from "@workspace/backend/_generated/api";
 import { Doc } from "@workspace/backend/_generated/dataModel";
+import { useAtomValue, useSetAtom } from "jotai";
+import { contactSessionIdAtomFamily, organizationIdAtom } from "../../atoms/widget-atoms";
 
 const formSchema = z.object({
   name: z.string().min(2, { message: "Name is required" }),
   email: z.string().min(2, { message: "Email is required" }).email({ message: "Invalid email address" }),
 });
-const organizationId = "123"; // TODO: get from props
+
 
 export const WidgetAuthScreen = () => {
+  const organizationId = useAtomValue(organizationIdAtom);
+  const setContactSessionId = useSetAtom(
+    contactSessionIdAtomFamily(organizationId || "")
+  );
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -49,14 +55,14 @@ export const WidgetAuthScreen = () => {
       cookieEnabled: navigator.cookieEnabled,
     };
 
-    const contactSessionsId = await createContactSession({
+    const contactSessionId = await createContactSession({
       ...values,
       organizationId,
       expiresAt: Date.now() + 1000 * 60 * 60 * 24, // 24 hours from now
       metadata,
     });
 
-    console.log("Contact Session ID:", contactSessionsId);
+    setContactSessionId(contactSessionId);
   }
 
   return (
